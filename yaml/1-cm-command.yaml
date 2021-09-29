@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cm4
+spec:
+  containers:
+    - name: cm4-container
+      image: busybox
+      command: [ "/bin/echo", "$(SPECIAL)" ]
+      env:
+        - name: SPECIAL
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: special.type
+  restartPolicy: Never

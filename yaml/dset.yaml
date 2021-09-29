@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dset
+spec:
+  selector:
+    matchLabels:
+      name: dset
+  template:
+    metadata:
+      labels:
+        name: dset
+    spec:
+      containers:
+      - name: dset-container
+        image: busybox
+        command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 3600']

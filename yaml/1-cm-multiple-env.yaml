@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cm2
+spec:
+  containers:
+    - name: cm2-container
+      image: busybox
+      command: [ "/bin/sh", "-c", "env" ]
+      env:
+        - name: ENEMIES
+          valueFrom:
+            configMapKeyRef:
+              name: game-config
+              key: lives
+              optional: true
+        - name: SPECIAL
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: special.how
+  restartPolicy: Never

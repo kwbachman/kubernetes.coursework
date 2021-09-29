@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bbenv1
+spec:
+  containers:
+    - name: bbenv1-container
+      image: busybox
+      command: [ "/bin/echo", "$PLANET" ]
+      envFrom:
+      - configMapRef:
+          name: space
+  restartPolicy: Never

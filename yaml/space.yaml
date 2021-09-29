@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spacepod
+spec:
+  containers:
+  - name: spacecont
+    image: busybox
+    command: [ "/bin/sh", "-c", "cat /etc/conf/system.conf" ]
+    volumeMounts:
+    - name: foo
+      mountPath: "/etc/conf"
+      readOnly: true
+  volumes:
+  - name: foo
+    configMap:
+      name: space-system

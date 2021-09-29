@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: bb
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      name: bb
+  template:
+    metadata:
+      labels:
+        name: bb
+    spec:
+      containers:
+      - name: bb
+        image: busybox:latest
+      terminationGracePeriodSeconds: 30
+

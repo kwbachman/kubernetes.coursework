@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: selbb
+  name: selbb
+spec:
+  containers:
+  - image: busybox
+    name: selbb
+    command: [ '/bin/sh', '-c', ' echo "Hello, Kubernetes!" && sleep 1h' ]
+    resources: {}
+  nodeSelector:
+    kind: special
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
